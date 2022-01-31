@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import React from 'react';
 import Expenses from "./components/Expenses/Expenses";
+import ExpenseForm from "./components/NewExpense/ExpenseForm";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 
 const App = () => {
@@ -27,20 +29,25 @@ const App = () => {
     },
   ];
 
-  return React.createElement(
-    "div",
-    {},
-    React.createElement("h2", {}, "Let's get Started!!"),
-    React.createElement(Expenses,
-    { items: expenses })
-  );
-
-  // return (
-  //   <div>
-  //     <h2>Let's get started</h2>
-  //     <Expenses items={expenses} />
-  //   </div>
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "Let's get Started!!"),
+  //   React.createElement(Expenses,
+  //   { items: expenses })
   // );
+
+  const addExpenseHandler = expense => {
+    console.log("in app.js");
+    console.log(expenses);
+  }
+
+  return (
+    <div>
+      <NewExpense onAddExpense={addExpenseHandler}/>
+      <Expenses items={expenses} />
+    </div>
+  );
 }
 
 export default App;
